@@ -1,0 +1,23 @@
+﻿@model ReturnViewModel
+@{
+    ViewData["Title"] = "Return Book";
+}
+
+<div class="container mt-5">
+    <h2>Return Book</h2>
+    <div class="card">
+        <div class="card-header">
+            <strong>@Model.BookTitle</strong>
+        </div>
+        <div class="card-body">
+            <p><strong>Borrower Name:</strong> @Model.BorrowerName</p>
+            <p><strong>Borrow Date:</strong> @Model.BorrowDate?.ToString("yyyy-MM-dd HH:mm:ss")</p>
+
+            <form asp-action="Return" method="post">
+                <input type="hidden" asp-for="BorrowRecordId" />
+                <button type="submit" class="btn btn-success">Confirm Return</button>
+                <a asp-action="Index" asp-controller="Book" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
